@@ -48,3 +48,41 @@ rolename varchar(40),
 FOREIGN KEY (AID) REFERENCES actors(AID),
 FOREIGN KEY (MID) REFERENCES movies(MID));
 
+-- 11
+INSERT INTO actors VALUES(100, "Charlie Chaplin");
+INSERT INTO actors VALUES(101, "Tyler Coleman");
+INSERT INTO actors VALUES(102, "Daniel Tomei");
+INSERT INTO actors VALUES(103, "Donald Trump");
+INSERT INTO actors VALUES(104, "Bingyang Wei");
+INSERT INTO actors VALUES(105, "Richard Simpson");
+
+INSERT INTO movies VALUES(1000, "That movie with Charlie Chaplin in it");
+INSERT INTO movies VALUES(1001, "Why Java is the Best Prog. Language");
+INSERT INTO movies VALUES(1002, "Why C++ is the Best Prog. Language");
+INSERT INTO movies VALUES(1003, "Life of a College Kid");
+INSERT INTO movies VALUES(1004, "Fast and Furious 157");
+
+INSERT INTO actor_role VALUES (100, 1000, "The Clown");
+INSERT INTO actor_role VALUES (100, 1000, "The Wise Guy");
+INSERT INTO actor_role VALUES (101, 1000, "Stunt Double");
+INSERT INTO actor_role VALUES (104, 1001, "Professor");
+INSERT INTO actor_role VALUES (105, 1002, "Professor");
+INSERT INTO actor_role VALUES (101, 1003, "Student");
+INSERT INTO actor_role VALUES (103, 1004, "All Roles");
+INSERT INTO actor_role VALUES (100, 1004, "Director");
+
+-- 12
+SELECT title, count(DISTINCT(rolename)) as 'Number of Roles'
+FROM actors NATURAL JOIN movies NATURAL JOIN actor_role
+GROUP BY name, title
+HAVING actors.name = 'Charlie Chaplin';
+
+-- 13
+SELECT name 
+FROM actors natural left JOIN actor_role
+WHERE MID is null;
+
+--14 
+SELECT DISTINCT(name), title
+FROM actors natural left JOIN actor_role NATURAL LEFT JOIN movies
+GROUP BY name, title
