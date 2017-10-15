@@ -16,10 +16,10 @@ INSERT INTO events(title, eDate, location, dept_name) values("ACM Monthly Meetin
 -- This will NOT execute because it violates the foreign key constraint dept_name because Art is not a department in the departments relation.
 
 -- 6
--- This will execute
+-- This will execute.
 
 -- 7
--- This will not execute because it violates the constraint that title and location must be unique values
+-- This will not execute because it violates the constraint that title and location must be unique values.
 
 -- 8 
 ALTER TABLE events DROP INDEX title;
@@ -82,7 +82,7 @@ SELECT name
 FROM actors natural left JOIN actor_role
 WHERE MID is null;
 
---14 
+-- 14 
 SELECT DISTINCT(name), title
 FROM actors natural left JOIN actor_role NATURAL LEFT JOIN movies
 GROUP BY name, title;
