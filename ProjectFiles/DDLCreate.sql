@@ -2,17 +2,17 @@
 create table fund(
 name varchar(50) not null,
 primary key(name), 
-qb_acct varchar(5) not null);
+qb_acct varchar(10) not null);
 
 -- contribution table
 create table contribution(
-    ID varchar(10) not null auto_increment,
+    ID int auto_increment,
     primary key(ID),
     amt numeric(10,2) not null,
     c_date date not null,
     note varchar(255),
-    c_type varchar(5) not null,
-    fund_name varchar(40),
+    c_type enum('ach','check','coin','currency') not null, 
+    fund_name varchar(50) default "General",
     env_num int default 0,
     foreign key (env_num) references donor(env_num),
     foreign key (fund_name) references fund(name));
