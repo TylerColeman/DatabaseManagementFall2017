@@ -15,8 +15,8 @@ public class InstructorDAO {
         try {
             // get a connection
             String dbURL = "jdbc:mysql://10.0.60.55:3306/tbcoleman";
-            String user = "tbcoleman";
-            String pass = "heckerman32";
+            String user = "";
+            String pass = "";
             Connection myConn = DriverManager.getConnection(dbURL, user, pass);
             // create statements
             Statement myStmt = myConn.createStatement();
