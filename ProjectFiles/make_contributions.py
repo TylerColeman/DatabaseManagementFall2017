@@ -7,10 +7,10 @@ fake = Faker()
 
 #########################################################################
 #These are hardcoded. copied from a select statement in phpMyAdmin      #
-fund_names = ["Comfort Dog", "No Longer Active", "Scholarship",         #
+fund_names = ["Comfort Dog", "No Longer Active", "Scholarship",         
               "Youth Camp Fees", "Youth Fundraisers", "Youth, Other",
               "Building", "Bulletins", "Facility Use", "General", "Missions",
-              "Music"]                                                  #
+              "Music", "Sunday School"]                                 #
                                                                         #
 c_types = ["ach", "coin", "check", "currency"]                          #
                                                                         #
@@ -21,10 +21,10 @@ env_num_limit = 50 #Highest envelope number in database                 #
 
 with open("make_contributions.sql", "w+") as file:
     for i in range(50):
-        amt = random.randint(0, 10000) / 100
-        if i % 6 == 0:
-            amt += 200
-        c_date = "'{}-{}-{}'".format(random.randint(2000, 2017), random.randint(1, 12), random.randint(1,29))
+        amt = random.randint(0, 30000) / 100
+        if i % 6 == 0: #add random decimal sometimes
+            amt += random.randint(0,100)/ 100
+        c_date = "'{}-{}-{}'".format(2017, random.randint(1, 11), random.randint(1,29))
         note = "'{}'".format(fake.sentence())
         c_type = "'{}'".format(c_types[random.randint(0,len(c_types)-1)])
         fund_name = "'{}'".format(fund_names[random.randint(0,len(fund_names)-1)])
