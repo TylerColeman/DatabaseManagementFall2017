@@ -22,7 +22,7 @@ env_num_limit = 50 #Highest envelope number in database                 #
 with open("make_contributions.sql", "w+") as file:
     for i in range(50):
         amt = random.randint(0, 30000) // 100
-        if i % 15 == 0: #add random decimal sometimes
+        if i % 13 == 0: #add random decimal sometimes
             amt += random.randint(0,100)/ 100
         c_date = "'{}-{}-{}'".format(2017, random.randint(1, 11), random.randint(1,29))
         note = "'{}'".format(fake.sentence())
